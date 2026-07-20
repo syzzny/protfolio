@@ -50,15 +50,30 @@ export const navLinks = [
 export const skills: Skill[] = [
   {
     category: "Design",
-    items: ["Figma", "Framer", "Protopie", "Adobe XD", "Illustrator"],
+    items: [
+      { name: "Figma", level: 5 },
+      { name: "Photoshop", level: 4 },
+      { name: "Illustrator", level: 4 },
+    ],
   },
   {
     category: "Publishing",
-    items: ["HTML5", "CSS3 / Sass", "JavaScript", "React", "Next.js"],
+    items: [
+      { name: "HTML5", level: 5 },
+      { name: "CSS3", level: 5 },
+      { name: "Sass", level: 5 },
+      { name: "JavaScript", level: 4 },
+      { name: "React", level: 3 },
+      { name: "Bootstrap", level: 5 },
+      { name: "Styled-components", level: 5 },
+    ],
   },
   {
     category: "Workflow",
-    items: ["Design System", "Notion", "Zeplin", "Git"],
+    items: [
+      { name: "Notion", level: 5 },
+      { name: "GitHub", level: 3 },
+    ],
   },
 ];
 

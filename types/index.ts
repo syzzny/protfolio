@@ -12,9 +12,14 @@ export interface Project {
   link?: string;
 }
 
+export interface SkillItem {
+  name: string;
+  level: number;
+}
+
 export interface Skill {
   category: string;
-  items: string[];
+  items: SkillItem[];
 }
 
 export interface SocialLink {
