@@ -1,5 +1,6 @@
 "use client";
 
+import { CSSProperties } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -12,6 +13,8 @@ interface FloatingShapeProps {
   size?: number;
   duration?: number;
   delay?: number;
+  /** Extra inline position styles (e.g. left/margin) for cases Tailwind's static class scanning can't cover. */
+  style?: CSSProperties;
 }
 
 /**
@@ -26,12 +29,13 @@ export function FloatingShape({
   size = 96,
   duration = 6,
   delay = 0,
+  style,
 }: FloatingShapeProps) {
   return (
     <motion.div
       aria-hidden
       className={cn("absolute select-none", className)}
-      style={{ width: size, height: size }}
+      style={{ width: size, height: size, ...style }}
       animate={{ y: [0, -16, 0], rotate: [0, 4, 0] }}
       transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
     >

@@ -7,13 +7,8 @@ export function Work() {
     <section id="work" className="py-28 md:py-40">
       <div className="mx-auto max-w-content px-6 md:px-10">
         <RevealOnScroll>
-          <span className="text-xs uppercase tracking-[0.25em] text-muted">
-            Work
-          </span>
-        </RevealOnScroll>
-        <RevealOnScroll delay={0.1}>
-          <h2 className="mt-6 max-w-2xl text-balance text-3xl font-medium tracking-tight text-foreground md:text-5xl">
-            디자인과 퍼블리싱이 함께 완성한 프로젝트들
+          <h2 className="max-w-2xl break-keep text-balance text-3xl font-medium tracking-tight text-foreground md:text-5xl">
+            Projects
           </h2>
         </RevealOnScroll>
       </div>

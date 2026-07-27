@@ -36,7 +36,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             href="/#work"
             className="text-sm text-muted transition-colors hover:text-foreground"
           >
-            ← Work
+            ← Project
           </Link>
         </RevealOnScroll>
 
@@ -63,7 +63,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
         <div className="mt-16 grid gap-12 md:grid-cols-12 md:gap-8">
           <RevealOnScroll className="md:col-span-8">
-            <p className="text-balance text-lg leading-relaxed text-foreground/85 md:text-xl">
+            <p className="break-keep text-balance text-lg leading-relaxed text-foreground/85 md:text-xl">
               {project.description}
             </p>
           </RevealOnScroll>

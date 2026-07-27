@@ -1,61 +1,119 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { processSteps, solidPlayClasses } from "@/lib/data";
+import { FloatingShape } from "@/components/ui/FloatingShape";
+import { processSteps } from "@/lib/data";
+
+const stepShapes = [
+  { src: "/images/shapes/roll.png", size: 150, duration: 7 },
+  { src: "/images/shapes/star.png", size: 130, duration: 6.5 },
+  { src: "/images/shapes/lego.png", size: 140, duration: 7.5 },
+  { src: "/images/shapes/flower.png", size: 130, duration: 6 },
+];
 
 export function Process() {
   const ref = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.75", "end 0.4"],
+    offset: ["start start", "end end"],
   });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    const index = Math.min(
+      processSteps.length - 1,
+      Math.max(0, Math.floor(v * processSteps.length))
+    );
+    setActive(index);
+  });
+
+  const activeStep = processSteps[active];
 
   return (
     <section id="process" className="px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-content">
         <RevealOnScroll>
-          <span className="text-xs uppercase tracking-[0.25em] text-muted">
+          <h2 className="max-w-2xl break-keep text-balance text-3xl font-medium tracking-tight text-foreground md:text-5xl">
             Process
-          </span>
-        </RevealOnScroll>
-        <RevealOnScroll delay={0.1}>
-          <h2 className="mt-6 max-w-2xl text-balance text-3xl font-medium tracking-tight text-foreground md:text-5xl">
-            네 단계로 완성하는 작업 방식
           </h2>
         </RevealOnScroll>
 
-        <div ref={ref} className="relative mt-20 md:mt-28">
-          <div className="absolute left-[22px] top-0 h-full w-px bg-border" />
-          <motion.div
-            style={{ height: lineHeight }}
-            className="absolute left-[22px] top-0 w-px bg-accent"
-          />
-
-          <ol className="flex flex-col gap-16 md:gap-20">
-            {processSteps.map((step, i) => (
-              <RevealOnScroll key={step.index} y={16}>
-                <li className="grid grid-cols-[2.75rem_1fr] items-start gap-6 pl-0 md:gap-10">
-                  <span
-                    className={`flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white ${
-                      solidPlayClasses[i % solidPlayClasses.length]
-                    }`}
-                  >
-                    {step.index}
+        <div
+          ref={ref}
+          className="mt-20 grid grid-cols-1 md:mt-28 md:grid-cols-[minmax(0,30rem)_1fr] md:gap-24"
+        >
+          {/* left column: sticky, swaps as you scroll */}
+          <div className="relative hidden md:block">
+            <div className="sticky top-24 md:top-28">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeStep.index}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                >
+                  <span className="block select-none text-[12rem] font-black leading-none text-foreground/10">
+                    {activeStep.index}
                   </span>
-                  <div>
-                    <h3 className="text-xl font-medium text-foreground md:text-2xl">
+                  <h3 className="-mt-14 text-4xl font-medium text-foreground">
+                    {activeStep.title}
+                  </h3>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* right column: each step scrolls past, drives the left column */}
+          <ol className="flex flex-col">
+            {processSteps.map((step, i) => {
+              const shape = stepShapes[i % stepShapes.length];
+              const mobileSize = Math.round(shape.size * 0.85);
+              return (
+                <li
+                  key={step.index}
+                  className="relative flex min-h-[65vh] flex-col justify-center gap-8 md:min-h-[85vh] md:gap-4"
+                >
+                  <div
+                    className="relative mx-auto md:hidden"
+                    style={{ width: mobileSize, height: mobileSize }}
+                  >
+                    <FloatingShape
+                      src={shape.src}
+                      alt=""
+                      size={mobileSize}
+                      duration={shape.duration}
+                      className="opacity-100"
+                    />
+                  </div>
+                  <FloatingShape
+                    src={shape.src}
+                    alt=""
+                    size={shape.size}
+                    duration={shape.duration}
+                    className="right-0 top-1/2 hidden -translate-y-1/2 opacity-70 md:block"
+                  />
+                  <div className="md:hidden">
+                    <span className="block select-none text-9xl font-black leading-none text-foreground/10">
+                      {step.index}
+                    </span>
+                    <h3 className="-mt-9 text-2xl font-medium text-foreground">
                       {step.title}
                     </h3>
-                    <p className="mt-3 max-w-md text-sm leading-relaxed text-muted md:text-base">
-                      {step.description}
-                    </p>
                   </div>
+                  <p className="max-w-2xl break-keep text-lg leading-snug text-muted md:text-2xl md:leading-snug">
+                    {step.description}
+                  </p>
                 </li>
-              </RevealOnScroll>
-            ))}
+              );
+            })}
           </ol>
         </div>
       </div>

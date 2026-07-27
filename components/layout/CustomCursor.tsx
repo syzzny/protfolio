@@ -7,6 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { usePathname } from "next/navigation";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useIsDesktop } from "@/hooks/useIsDesktop";
 
@@ -28,6 +29,11 @@ export function CursorProvider({ children }: { children: ReactNode }) {
   const [variant, setVariant] = useState<CursorVariant>("default");
   const [ready, setReady] = useState(false);
   const isDesktop = useIsDesktop();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setVariant("default");
+  }, [pathname]);
 
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);

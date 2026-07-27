@@ -57,6 +57,40 @@ export function Hero() {
         style={{ x: layerX, y: layerY }}
         className="pointer-events-none absolute inset-0"
       >
+        {/* Mobile / tablet: stacked above & below the card instead of beside it */}
+        <FloatingShape
+          src="/images/shapes/roll.png"
+          alt="roll"
+          size={64}
+          duration={7}
+          className="left-[14%] top-[10%] block lg:hidden"
+        />
+        <FloatingShape
+          src="/images/shapes/star.png"
+          alt="star"
+          size={70}
+          duration={6.5}
+          delay={0.4}
+          className="right-[14%] top-[8%] block lg:hidden"
+        />
+        <FloatingShape
+          src="/images/shapes/lego.png"
+          alt="lego"
+          size={62}
+          duration={7.5}
+          delay={0.2}
+          className="left-[16%] bottom-[10%] block lg:hidden"
+        />
+        <FloatingShape
+          src="/images/shapes/ring.png"
+          alt="ring"
+          size={58}
+          duration={6}
+          delay={0.6}
+          className="right-[16%] bottom-[12%] block lg:hidden"
+        />
+
+        {/* Desktop: spread out beside the card */}
         <FloatingShape
           src="/images/shapes/roll.png"
           alt="roll"
@@ -127,12 +161,12 @@ export function Hero() {
               </div>
 
               {/* Back: intro text */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 overflow-hidden rounded-[2rem] border border-white/30 bg-white px-6 text-center shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                <p className="text-2xl text-foreground md:text-3xl">
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-[2rem] border border-white/30 bg-white px-5 text-center shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                <p className="text-xl text-foreground md:text-3xl">
                   Hi, I&apos;m{" "}
                   <span className="font-semibold">{personal.name}</span>!
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-muted">
+                <p className="break-keep text-xs leading-relaxed text-muted md:text-sm">
                   {personal.tagline}
                 </p>
               </div>

@@ -12,7 +12,7 @@ import type { IconType } from "react-icons";
 import Image from "next/image";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { SkillCard } from "@/components/ui/SkillCard";
-import { aboutText, personal, skills } from "@/lib/data";
+import { aboutText, skills } from "@/lib/data";
 
 const skillIcons: Record<string, IconType> = {
   Framer: SiFramer,
@@ -59,52 +59,54 @@ const allSkills = skills.flatMap((group) => group.items);
 export function About() {
   return (
     <section id="about" className="px-6 py-28 md:px-10 md:py-40">
-      <div className="mx-auto max-w-content">
+      <div className="mx-auto max-w-content text-center">
         <RevealOnScroll>
-          <span className="text-xs uppercase tracking-[0.25em] text-muted">
-            About
-          </span>
+          <h2 className="mx-auto max-w-2xl break-keep text-balance text-2xl font-medium tracking-tight text-foreground md:text-4xl">
+            About Me
+          </h2>
         </RevealOnScroll>
 
-        <div className="mt-8 max-w-3xl">
-          <RevealOnScroll>
-            <p className="text-balance text-2xl font-medium leading-snug tracking-tight text-foreground md:text-4xl">
-              {aboutText.intro}
-            </p>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.1}>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              {aboutText.detail}
-            </p>
-          </RevealOnScroll>
+        <div className="relative mx-auto mt-14 max-w-3xl md:mt-16">
+          {/* decorative backdrop behind the about card */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-between"
+          >
+            <Image
+              src="/images/3d-about-1.png"
+              alt=""
+              width={800}
+              height={800}
+              className="-ml-8 -mt-4 w-40 animate-float-slow opacity-90 md:-ml-24 md:w-72"
+            />
+            <Image
+              src="/images/3d-about-2.png"
+              alt=""
+              width={800}
+              height={800}
+              className="-mr-8 mt-4 w-40 animate-float-slow opacity-90 [animation-delay:1.5s] md:-mr-24 md:w-72"
+            />
+          </div>
 
-          <RevealOnScroll delay={0.2}>
-            <dl className="mt-14 flex flex-wrap gap-x-12 gap-y-6 border-t border-border pt-8">
-              <div>
-                <dt className="text-xs uppercase tracking-[0.2em] text-muted">
-                  Role
-                </dt>
-                <dd className="mt-2 text-sm text-foreground">
-                  {personal.title}
-                </dd>
+          <RevealOnScroll>
+            <div className="rounded-[2.5rem] bg-accent/5 p-4 shadow-sm backdrop-blur-xl transition-shadow duration-300 hover:shadow-[0_16px_40px_-20px_rgba(0,0,0,0.25)] md:p-5">
+              <div className="rounded-[2rem] bg-white px-5 py-8 text-center md:p-12">
+                <p className="break-keep text-balance text-xl font-medium leading-normal tracking-tight text-foreground md:text-3xl">
+                  {aboutText.intro}
+                </p>
+                <p className="mx-auto mt-4 max-w-xl break-keep text-base leading-relaxed text-muted md:mt-8 md:text-lg">
+                  {aboutText.detail}
+                </p>
               </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.2em] text-muted">
-                  Based in
-                </dt>
-                <dd className="mt-2 text-sm text-foreground">
-                  {personal.location}
-                </dd>
-              </div>
-            </dl>
+            </div>
           </RevealOnScroll>
         </div>
 
-        <div className="relative mt-28">
+        <div className="relative mt-48 md:mt-56">
           {/* decorative backdrop behind the stack grid */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center"
+            className="pointer-events-none absolute inset-0 -z-10 hidden items-center justify-center md:flex"
           >
             <Image
               src="/images/3d-bg.png"
@@ -116,12 +118,12 @@ export function About() {
           </div>
 
           <RevealOnScroll>
-            <span className="text-xs uppercase tracking-[0.25em] text-muted">
-              Stack
-            </span>
+            <h2 className="mx-auto max-w-2xl break-keep text-balance text-2xl font-medium tracking-tight text-foreground md:text-4xl">
+              My Stack
+            </h2>
           </RevealOnScroll>
 
-          <ul className="relative mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+          <ul className="relative mt-14 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 md:mt-16">
             {allSkills.map((skill, i) => {
               const logo = skillLogos[skill.name];
               const Icon = skillIcons[skill.name];
@@ -138,7 +140,7 @@ export function About() {
                             alt={skill.name}
                             width={logo.width}
                             height={logo.height}
-                            className="h-20 w-auto object-contain"
+                            className="h-12 w-auto object-contain md:h-20"
                           />
                         ) : Icon ? (
                           <Icon className="h-9 w-9 text-foreground/80" />

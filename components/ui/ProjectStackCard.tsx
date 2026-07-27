@@ -26,15 +26,15 @@ export function ProjectStackCard({ project, index, total }: ProjectStackCardProp
   return (
     <div
       ref={ref}
-      className="sticky top-24 h-[78vh] px-6 md:top-28 md:h-[85vh] md:px-10"
+      className="sticky top-24 px-6 md:top-28 md:px-10"
       style={{ zIndex: index + 1 }}
     >
-      <motion.div style={{ scale, opacity }} className="h-full">
+      <motion.div style={{ scale, opacity }}>
         <Link
           href={`/work/${project.slug}`}
           onMouseEnter={() => setVariant("view")}
           onMouseLeave={() => setVariant("default")}
-          className={`relative flex h-full w-full flex-col justify-between overflow-hidden rounded-[2.5rem] p-8 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.3)] md:p-14 ${
+          className={`relative flex min-h-[78vh] w-full flex-col justify-between overflow-hidden rounded-[2.5rem] p-8 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.3)] md:min-h-[85vh] md:p-14 ${
             solidPlayClasses[index % solidPlayClasses.length]
           }`}
         >
@@ -51,10 +51,10 @@ export function ProjectStackCard({ project, index, total }: ProjectStackCardProp
             <p className="text-xs uppercase tracking-[0.25em] text-white/80">
               {project.category}
             </p>
-            <h3 className="mt-4 text-[clamp(2rem,6vw,4.5rem)] font-medium leading-[0.95] tracking-tight">
+            <h3 className="mt-4 break-keep text-[clamp(2rem,6vw,4.5rem)] font-medium leading-[0.95] tracking-tight">
               {project.title}
             </h3>
-            <p className="mt-4 max-w-md text-balance text-sm text-white/85 md:text-base">
+            <p className="mt-4 max-w-md break-keep text-balance text-sm text-white/85 md:text-base">
               {project.summary}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">

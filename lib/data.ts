@@ -27,9 +27,11 @@ export const personal = {
   name: "손예진",
   nameEn: "Yejin's portfolio",
   title: "UI/UX Designer & Publisher",
-  tagline: "디자인을 정확하게 구현하고, 더 나은 사용 경험을 고민하는 퍼블리셔",
+  tagline: "디자인을 정확하게 구현하고, 더 나은 사용 경험을 고민하는 퍼블리셔입니다",
   location: "Seoul, KR",
-  email: "hello@sonyejin.com",
+  email: "son115502@gmail.com",
+  available: true,
+  availabilityText: "Available for freelance",
 };
 
 export const heroStat = {
@@ -42,7 +44,7 @@ export const avatarClasses = ["bg-play-blue", "bg-play-amber", "bg-play-teal"];
 export const navLinks = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
+  { label: "Projects", href: "#work" },
   { label: "Process", href: "#process" },
   { label: "Contact", href: "#contact" },
 ];
@@ -78,9 +80,9 @@ export const skills: Skill[] = [
 ];
 
 export const aboutText = {
-  intro: "사용자의 흐름을 이해하고, 그 흐름이 자연스러운 화면이 되도록 디자인하고 퍼블리싱합니다.",
+  intro: "디자인을 이해하고 구현하는 퍼블리셔",
   detail:
-    "디자인과 퍼블리싱 사이의 간극을 줄이는 데 관심이 많습니다. 인터랙션 하나, 여백 1px까지 의도를 담아 작업하며, 기획-디자인-구현이 끊기지 않는 결과물을 만듭니다.",
+    "디자인의 의도를 정확하게 이해하고 이를 화면에 자연스럽게 구현하는 과정을 중요하게 생각합니다. UI 디자인부터 퍼블리싱까지 직접 작업하며 사용자의 시선과 동선을 고려한 화면을 만들기 위해 노력합니다. 작은 디테일까지 놓치지 않는 꼼꼼함으로, 보기 좋은 디자인을 넘어 누구나 편하게 사용할 수 있는 완성도 높은 웹 서비스를 구현하는 것이 목표입니다.",
 };
 
 export const projects: Project[] = [
@@ -141,23 +143,23 @@ export const projects: Project[] = [
 export const processSteps: ProcessStep[] = [
   {
     index: "01",
-    title: "Discover",
-    description: "리서치와 요구사항 분석을 통해 문제를 정의합니다.",
+title: "Research",
+    description: "프로젝트를 시작하기 전에 요구사항과 서비스의 목적을 먼저 파악합니다. 사용자 관점에서 필요한 기능과 화면 구성을 정리하고, 래퍼런스 조사와 정보 구조를 분석하며 전체적인 방향을 설정합니다. 이후의 디자인과 개발 과정이 자연스럽게 이어질 수 있도록 프로젝트의 기반을 만드는 단계입니다.",
   },
   {
     index: "02",
     title: "Design",
-    description: "정보 구조를 설계하고 UI 시스템을 구축합니다.",
+    description: "사용자의 흐름을 고려하여 화면을 설계하고, 디자인 시스템과 컴포넌트를 활용해 일관성 있는 UI를 제작합니다. 컬러, 타이포그래피, 간격 등 작은 요소까지 세심하게 고려하며 보기 좋은 화면을 넘어 누구나 직관적으로 사용할 수 있는 인터페이스를 만드는데 집중합니다.",
   },
   {
     index: "03",
-    title: "Build",
-    description: "디자인을 반응형 웹으로 정교하게 퍼블리싱합니다.",
+    title: "Publish",
+    description: "디자인의 의도를 그대로 전달할 수 있도록 HTML, CSS, JavaScript를 활용해 화면을 구현합니다. 퍼블리싱 과정에서 발생할 수 있는 문제를 사전에 예방하고, 반응형 레이아웃과 컴포넌트 구조를 고려하여 다양한 환경에서도 안정적으로 동작하는 화면을 만드는 것을 목표로 합니다. 유지보수가 쉬운 코드와 재사용성을 함께 고려하여 작업합니다.",
   },
   {
     index: "04",
-    title: "Refine",
-    description: "테스트와 피드백을 통해 디테일을 다듬습니다.",
+    title: "Improve",
+    description: "구현이 끝난 후에도 실제 사용성을 점검하며 화면을 지속적으로 개선합니다. UI의 디테일과 인터랙션을 확인하고, 발견된 문제를 수정하며 더 자연스러운 사용자 경험을 만들어갑니다. 작은 피드백도 놓치지 않고 반영하여 프로젝트의 완성도를 높이는 과정을 중요하게 생각합니다.",
   },
 ];
 

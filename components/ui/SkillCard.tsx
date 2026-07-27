@@ -27,7 +27,7 @@ export function SkillCard({ name, level, icon }: SkillCardProps) {
         )}
       >
         {/* Front */}
-        <div className="absolute inset-0 rounded-[1.75rem] bg-accent/5 p-5 shadow-sm backdrop-blur-xl transition-shadow duration-300 [backface-visibility:hidden] group-hover:shadow-[0_16px_40px_-20px_rgba(0,0,0,0.25)]">
+        <div className="absolute inset-0 rounded-[1.75rem] bg-accent/5 p-4 shadow-sm backdrop-blur-xl transition-shadow duration-300 [backface-visibility:hidden] group-hover:shadow-[0_16px_40px_-20px_rgba(0,0,0,0.25)] md:p-5">
           <div className="relative flex h-full w-full flex-col items-center justify-center gap-3 rounded-xl bg-white p-3 text-center">
             {icon}
             <span className="text-lg font-medium text-foreground">{name}</span>
@@ -39,7 +39,7 @@ export function SkillCard({ name, level, icon }: SkillCardProps) {
         </div>
 
         {/* Back */}
-        <div className="absolute inset-0 rounded-[1.75rem] bg-accent/25 p-5 shadow-sm backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+        <div className="absolute inset-0 rounded-[1.75rem] bg-accent/25 p-4 shadow-sm backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)] md:p-5">
           <div className="flex h-full w-full flex-col items-center justify-center gap-1 rounded-xl bg-accent px-3 text-center">
             <span className="text-sm font-semibold text-accent-foreground">
               {name}
